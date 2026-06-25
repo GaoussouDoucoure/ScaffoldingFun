@@ -12,6 +12,9 @@ builder.Services.AddDbContext<Lahman18712022Context>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:BaseballConnection"]);
 });
 
+builder.Services.AddScoped<IBaseballRepository, EFBaseballRepository>(); 
+/* This above means when there is Http request, don't pass them the interface but pass them the instance */
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
